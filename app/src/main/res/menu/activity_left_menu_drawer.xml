@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main_page"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Strona Główna" />
+
+        <item
+            android:id="@+id/nav_choose_plan"
+            android:icon="@drawable/ic_fitness_center_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Wybierz Plan" />
+        <item
+            android:id="@+id/nav_diet"
+            android:icon="@drawable/ic_local_dining_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Dieta" />
+        <item
+            android:id="@+id/nav_skills"
+            android:icon="@drawable/ic_skills"
+            android:iconTint="@color/white"
+            android:title="Umiejętności" />
+        <item
+            android:id="@+id/nav_stretching"
+            android:icon="@drawable/ic_accessibility_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Rozciąganie" />
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Wyloguj się" />
+    </group>
+
+</menu>

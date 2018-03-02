@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "531911493345",
+    "firebase_url": "https://androidstreetworkout.firebaseio.com",
+    "project_id": "androidstreetworkout",
+    "storage_bucket": "androidstreetworkout.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531911493345:android:5ea46fc10824bc73",
+        "android_client_info": {
+          "package_name": "com.example.ccc.streetworkoutapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531911493345-8u1uug6dr6inrpuvucon1b3k8o9jf16c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ccc.streetworkoutapp",
+            "certificate_hash": "321a21fa343990864c9c25a927eb3fc2044e1dcd"
+          }
+        },
+        {
+          "client_id": "531911493345-blu5kbabpqilf1uef2p1rg6kq64ao52v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaLTMoK2zBb6SMus503MvogFHhnFnjE_Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531911493345-blu5kbabpqilf1uef2p1rg6kq64ao52v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
