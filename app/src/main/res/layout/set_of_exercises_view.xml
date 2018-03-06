@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
-    >
+    android:layout_height="190dp">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/training_plans_image"
+            android:id="@+id/set_of_exercises_image"
             android:scaleType="centerCrop"
             android:src="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <TextView
-            android:id="@+id/training_plans_name"
+            android:id="@+id/set_of_exercises_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nazwa Planu"
+            android:text="Nazwa ćwiczenia"
             android:textColor="@android:color/white"
             android:background="#4f0e0d0e"
             android:textSize="20sp"
