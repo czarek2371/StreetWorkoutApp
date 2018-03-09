@@ -27,7 +27,8 @@
             android:name=".LeftMenu"
             android:label="@string/title_activity_left_menu"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SetOfExercises"></activity>
+        <activity android:name=".SetOfExercises" />
+        <activity android:name=".DetailsOfExercise"></activity>
     </application>
 
 </manifest>

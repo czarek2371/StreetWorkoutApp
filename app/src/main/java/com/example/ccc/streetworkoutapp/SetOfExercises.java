@@ -1,5 +1,6 @@
 package com.example.ccc.streetworkoutapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
 import com.example.ccc.streetworkoutapp.Model.Set;
@@ -74,7 +74,9 @@ public class SetOfExercises extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         //start new activity
-                        Toast.makeText(SetOfExercises.this, "" + local.getName(), Toast.LENGTH_SHORT).show();
+                        Intent detailsOfExcercise = new Intent(SetOfExercises.this, DetailsOfExercise.class);
+                        detailsOfExcercise.putExtra("ExerciseId", adapter.getRef(position).getKey()); //send exercise id to new activity
+                        startActivity(detailsOfExcercise);
 
                     }
                 });
