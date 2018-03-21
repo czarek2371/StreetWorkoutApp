@@ -3,6 +3,7 @@ package com.example.ccc.streetworkoutapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -54,6 +55,15 @@ public class LeftMenu extends AppCompatActivity
         //init firebase
         database = FirebaseDatabase.getInstance();
         training_Plans = database.getReference("Training_Plans");
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cartIntent = new Intent(LeftMenu.this,MyPlan.class);
+                startActivity(cartIntent);
+            }
+        });
 
 
 
@@ -164,7 +174,18 @@ public class LeftMenu extends AppCompatActivity
 
         } else if (id == R.id.nav_stretching) {
 
+        } else if (id == R.id.nav_plan_edit) {
+            Intent planEditIntent = new Intent(LeftMenu.this,MyPlan.class);
+            startActivity(planEditIntent);
+
+        } else if (id == R.id.nav_my_plan) {
+//            Intent myPlanIntent = new Intent(LeftMenu.this,PlanOfUser.class);
+//            startActivity(myPlanIntent);
+
         } else if (id == R.id.nav_sign_out) {
+            Intent signIn = new Intent(LeftMenu.this,SignIn.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signIn);
 
         }
 

@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.ccc.streetworkoutapp.Database.Database;
+import com.example.ccc.streetworkoutapp.Model.Plan;
 import com.example.ccc.streetworkoutapp.Model.Set;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,8 +26,10 @@ public class DetailsOfExercise extends AppCompatActivity {
     TextView exercise_name, exercise_description;
     ImageView img_exercise;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    ElegantNumberButton numberButton, numberButton2;
     FloatingActionButton btnFavorite;
 
+    Set currentExercise;
 
     String exerciseId = "";
 
@@ -39,9 +46,28 @@ public class DetailsOfExercise extends AppCompatActivity {
         exercises = database.getReference("Set_Of_Exercises");
 
         //Init view
+        numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
+        numberButton2 = (ElegantNumberButton) findViewById(R.id.number_button2);
+        btnFavorite = (FloatingActionButton) findViewById(R.id.btnFavorite);
+
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Database(getBaseContext()).addToPlan(new Plan(
+                        exerciseId,
+                        currentExercise.getName(),
+                        numberButton.getNumber(),
+                        numberButton2.getNumber()
+                ));
+                Toast.makeText(DetailsOfExercise.this, "Dodano do Mój Plan", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Init view
         exercise_name = (TextView) findViewById(R.id.exercise_name);
         exercise_description = (TextView) findViewById(R.id.exercise_description);
         img_exercise = (ImageView) findViewById(R.id.img_exercise);
+
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.TextAppearance_Design_CollapsingToolbar_Expanded);
@@ -61,18 +87,19 @@ public class DetailsOfExercise extends AppCompatActivity {
         exercises.child(exerciseId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Set setOfExercise = dataSnapshot.getValue(Set.class);
+                currentExercise = dataSnapshot.getValue(Set.class);
 
                 //set image
-                Picasso.with(getBaseContext()).load(setOfExercise.getImage())
+                Picasso.with(getBaseContext()).load(currentExercise.getImage())
                         .into(img_exercise);
 
-                collapsingToolbarLayout.setTitle(setOfExercise.getName());
+                collapsingToolbarLayout.setTitle(currentExercise.getName());
 
 
-                exercise_name.setText(setOfExercise.getName());
+                exercise_name.setText(currentExercise.getName());
 
-                exercise_description.setText(setOfExercise.getDescription());
+                exercise_description.setText(currentExercise.getDescription());
+
 
             }
 

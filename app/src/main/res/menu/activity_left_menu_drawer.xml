@@ -31,6 +31,16 @@
             android:iconTint="@color/white"
             android:title="Rozciąganie" />
         <item
+            android:id="@+id/nav_plan_edit"
+            android:icon="@drawable/ic_fitness_center_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Edytuj plan" />
+        <item
+            android:id="@+id/nav_my_plan"
+            android:icon="@drawable/ic_fitness_center_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Mój Plan" />
+        <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:iconTint="@color/white"

@@ -28,7 +28,8 @@
             android:label="@string/title_activity_left_menu"
             android:theme="@style/AppTheme" />
         <activity android:name=".SetOfExercises" />
-        <activity android:name=".DetailsOfExercise"></activity>
+        <activity android:name=".DetailsOfExercise" />
+        <activity android:name=".MyPlan" />
     </application>
 
 </manifest>
