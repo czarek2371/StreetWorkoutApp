@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.Database.Database;
 import com.example.ccc.streetworkoutapp.Model.Plan;
 import com.example.ccc.streetworkoutapp.Model.SavePlan;
@@ -74,8 +75,8 @@ public class MyPlan extends AppCompatActivity {
 
     private void showAlertDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MyPlan.this);
-        alertDialog.setTitle("Utwórz własny Plan!");
-        alertDialog.setMessage("xd: ");
+        alertDialog.setTitle("Zapisać plan?");
+      //  alertDialog.setMessage("xd: ");
 
         final EditText edtPlanName = new EditText(MyPlan.this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -87,7 +88,7 @@ public class MyPlan extends AppCompatActivity {
         alertDialog.setIcon(R.drawable.ic_favorite_border_black_24dp);
 
 
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //create new saveplan
@@ -105,7 +106,7 @@ public class MyPlan extends AppCompatActivity {
 
 
             }
-        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        }).setNegativeButton("Nie", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

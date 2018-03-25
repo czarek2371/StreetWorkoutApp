@@ -10,7 +10,7 @@ public class Plan {
     private String Series;
     private String Reps;
 
-    public Plan() {
+    public Plan(String exerciseId, String exerciseDescription, String exerciseImage, String exerciseMenuId, String userEmail) {
     }
 
     public Plan(String exerciseId, String exerciseName, String series, String reps) {

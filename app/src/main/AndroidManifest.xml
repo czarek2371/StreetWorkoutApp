@@ -30,6 +30,7 @@
         <activity android:name=".SetOfExercises" />
         <activity android:name=".DetailsOfExercise" />
         <activity android:name=".MyPlan" />
+        <activity android:name=".FavoritesActivity"></activity>
     </application>
 
 </manifest>

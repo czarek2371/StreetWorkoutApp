@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
+import com.example.ccc.streetworkoutapp.Model.Set;
 import com.example.ccc.streetworkoutapp.Model.Training_Plans;
 import com.example.ccc.streetworkoutapp.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -174,13 +175,14 @@ public class LeftMenu extends AppCompatActivity
 
         } else if (id == R.id.nav_stretching) {
 
+
         } else if (id == R.id.nav_plan_edit) {
             Intent planEditIntent = new Intent(LeftMenu.this,MyPlan.class);
             startActivity(planEditIntent);
 
         } else if (id == R.id.nav_my_plan) {
-//            Intent myPlanIntent = new Intent(LeftMenu.this,PlanOfUser.class);
-//            startActivity(myPlanIntent);
+            startActivity(new Intent(LeftMenu.this,FavoritesActivity.class));
+
 
         } else if (id == R.id.nav_sign_out) {
             Intent signIn = new Intent(LeftMenu.this,SignIn.class);

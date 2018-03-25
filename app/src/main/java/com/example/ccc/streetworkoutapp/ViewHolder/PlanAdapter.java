@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
 import com.example.ccc.streetworkoutapp.Model.Plan;
 import com.example.ccc.streetworkoutapp.R;
@@ -24,26 +26,6 @@ import java.util.Locale;
  * Created by ccc on 19.03.2018.
  */
 
-class PlanViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
-    public TextView txt_plan_name,txt_price;
-    private ItemClickListener itemClickListener;
-
-    public void setTxt_plan_name(TextView txt_plan_name) {
-        this.txt_plan_name = txt_plan_name;
-    }
-
-    public PlanViewHolder(View itemView) {
-        super(itemView);
-        txt_plan_name = (TextView)itemView.findViewById(R.id.plan_item_name);
-        txt_price = (TextView)itemView.findViewById(R.id.plan_item_price);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-}
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanViewHolder> {
     private List<Plan> listData = new ArrayList<>();

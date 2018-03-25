@@ -9,8 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.ccc.streetworkoutapp.Common.Common;
+import com.example.ccc.streetworkoutapp.Database.Database;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
+import com.example.ccc.streetworkoutapp.Model.Favorites;
 import com.example.ccc.streetworkoutapp.Model.Set;
 import com.example.ccc.streetworkoutapp.ViewHolder.SetViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -30,6 +34,7 @@ public class SetOfExercises extends AppCompatActivity {
     DatabaseReference excercisesList;
 
     String Training_PlansId = "";
+    Database localDB;
 
     FirebaseRecyclerAdapter<Set, SetViewHolder> adapter;
 
@@ -38,9 +43,15 @@ public class SetOfExercises extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_of_exercises);
 
+        //Favorites
+
+
         //Firebase
         database = FirebaseDatabase.getInstance();
         excercisesList = database.getReference("Set_Of_Exercises");
+
+        //localDB
+        localDB = new Database(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_excercises);
         recyclerView.setHasFixedSize(true);
@@ -63,11 +74,47 @@ public class SetOfExercises extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Set, SetViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull SetViewHolder viewHolder, int position, @NonNull Set model) {
+            protected void onBindViewHolder(@NonNull final SetViewHolder viewHolder, final int position, @NonNull final Set model) {
 
                 viewHolder.txtSetOfExercises.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage())
                         .into(viewHolder.imageSetOfExercises);
+
+                //add FAvorites
+
+                if (localDB.isFavorite(adapter.getRef(position).getKey(), Common.currentUser.getEmail()))
+                    viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+
+                //click to change state od favorite
+                viewHolder.fav_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Favorites favorites = new Favorites();
+                        favorites.setExerciseId(adapter.getRef(position).getKey());
+                        favorites.setExerciseDescription(model.getDescription());
+                        favorites.setExerciseImage(model.getImage());
+                        favorites.setExerciseMenuId(model.getMenuId());
+                        favorites.setExerciseName(model.getName());
+                        favorites.setUserEmail(Common.currentUser.getEmail());
+
+                        if(!localDB.isFavorite(adapter.getRef(position).getKey(),Common.currentUser.getEmail()))
+                        {
+                            localDB.addToFavorities(favorites);
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(SetOfExercises.this, ""+model.getName()+" został dodany do Ulubionych!", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            localDB.removeFromFavorities(adapter.getRef(position).getKey(),Common.currentUser.getEmail());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(SetOfExercises.this, ""+model.getName()+" został usunięty z Ulubionych!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+
 
                 final Set local = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {

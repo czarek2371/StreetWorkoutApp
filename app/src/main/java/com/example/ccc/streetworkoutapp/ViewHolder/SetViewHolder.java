@@ -15,7 +15,7 @@ import com.example.ccc.streetworkoutapp.R;
 public class SetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView txtSetOfExercises;
-    public ImageView imageSetOfExercises;
+    public ImageView imageSetOfExercises, fav_image;
 
     private ItemClickListener itemClickListener;
 
@@ -28,7 +28,7 @@ public class SetViewHolder extends RecyclerView.ViewHolder implements View.OnCli
 
         txtSetOfExercises = (TextView) itemView.findViewById(R.id.set_of_exercises_name);
         imageSetOfExercises = (ImageView) itemView.findViewById(R.id.set_of_exercises_image);
-
+        fav_image = (ImageView) itemView.findViewById(R.id.fav);
         itemView.setOnClickListener(this);
     }
 
