@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".LeftMenu"
@@ -30,7 +29,11 @@
         <activity android:name=".SetOfExercises" />
         <activity android:name=".DetailsOfExercise" />
         <activity android:name=".MyPlan" />
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".ExamplesOfTrainingPlans" />
+        <activity android:name=".NumberOfExample" />
+        <activity android:name=".ExampleDetails"></activity>
     </application>
 
 </manifest>

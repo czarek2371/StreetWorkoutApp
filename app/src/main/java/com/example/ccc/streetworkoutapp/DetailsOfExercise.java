@@ -4,14 +4,10 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ccc.streetworkoutapp.Database.Database;
-import com.example.ccc.streetworkoutapp.Model.Plan;
 import com.example.ccc.streetworkoutapp.Model.Set;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,22 +42,22 @@ public class DetailsOfExercise extends AppCompatActivity {
         exercises = database.getReference("Set_Of_Exercises");
 
         //Init view
-        numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
-        numberButton2 = (ElegantNumberButton) findViewById(R.id.number_button2);
-        btnFavorite = (FloatingActionButton) findViewById(R.id.btnFavorite);
-
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Database(getBaseContext()).addToPlan(new Plan(
-                        exerciseId,
-                        currentExercise.getName(),
-                        numberButton.getNumber(),
-                        numberButton2.getNumber()
-                ));
-                Toast.makeText(DetailsOfExercise.this, "Dodano do Mój Plan", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
+//        numberButton2 = (ElegantNumberButton) findViewById(R.id.number_button2);
+//        btnFavorite = (FloatingActionButton) findViewById(R.id.btnFavorite);
+//
+//        btnFavorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new Database(getBaseContext()).addToPlan(new Plan(
+//                        exerciseId,
+//                        currentExercise.getName(),
+//                        numberButton.getNumber(),
+//                        numberButton2.getNumber()
+//                ));
+//                Toast.makeText(DetailsOfExercise.this, "Dodano do Mój Plan", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         //Init view
         exercise_name = (TextView) findViewById(R.id.exercise_name);

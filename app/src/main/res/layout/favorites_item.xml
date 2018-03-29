@@ -9,14 +9,14 @@
     <RelativeLayout
         android:id="@+id/view_background"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="190dp"
 
         >
 
         <ImageView
             android:id="@+id/training_plans_image"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="170dp"
             android:scaleType="centerCrop"
             android:src="@color/darkGray" />
 

@@ -1,25 +1,28 @@
 package com.example.ccc.streetworkoutapp;
 
-import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
-import com.example.ccc.streetworkoutapp.Model.User;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtLogin, edtPassword, edtEmail;
-    Button btnSignUp,btnSignIn;
+    Button btnSignUp, btnAlreadyHaveAcc;
+    RelativeLayout activity_sign_up;
+
+    private FirebaseAuth auth;
+    Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,54 +30,50 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
 
-
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        btnAlreadyHaveAcc = (Button) findViewById(R.id.btnAlreadyHaveAcc);
+        activity_sign_up = (RelativeLayout) findViewById(R.id.activity_sign_up);
 
+
+        btnSignUp.setOnClickListener(this);
+        btnAlreadyHaveAcc.setOnClickListener(this);
 
 
         //Init Firebase
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
-
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final ProgressDialog mProgressDialog = new ProgressDialog(SignUp.this);
-                mProgressDialog.setMessage("Please wait...");
-                mProgressDialog.show();
-
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //check if  user phone already exists
-                        if (dataSnapshot.child(edtLogin.getText().toString()).exists())
-                        {
-                            mProgressDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Login already register", Toast.LENGTH_SHORT).show();
-
-                        }
-                        else
-                        {
-                            mProgressDialog.dismiss();
-                            User user = new User(edtEmail.getText().toString(),edtPassword.getText().toString());
-                            table_user.child(edtLogin.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
-                            finish();
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
+        auth = FirebaseAuth.getInstance();
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnAlreadyHaveAcc) {
+            startActivity(new Intent(SignUp.this, MainActivity.class));
+            finish();
+        } else if (v.getId() == R.id.btnSignUp) {
+            signUpUser(edtLogin.getText().toString(),edtPassword.getText().toString());
+
+
+        }
+    }
+
+    private void signUpUser(String login, String password) {
+        auth.createUserWithEmailAndPassword(login,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful())
+                        {
+                            snackbar = Snackbar.make(activity_sign_up,"Błąd: " +task.getException(),Snackbar.LENGTH_SHORT);
+                            snackbar.show();
+                        }
+                        else {
+                            snackbar = Snackbar.make(activity_sign_up,"Konto zostało utworzone",Snackbar.LENGTH_SHORT);
+                            snackbar.show();
+
+                        }
+                    }
+                });
+    }
 }

@@ -2,8 +2,8 @@ package com.example.ccc.streetworkoutapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,14 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
-import com.example.ccc.streetworkoutapp.Model.Set;
 import com.example.ccc.streetworkoutapp.Model.Training_Plans;
 import com.example.ccc.streetworkoutapp.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -35,13 +35,15 @@ public class LeftMenu extends AppCompatActivity
 
     FirebaseDatabase database;
     DatabaseReference training_Plans;
+    private FirebaseAuth auth;
 
     TextView txtNameOfUser;
 
     RecyclerView mRecyclerMenu;
     RecyclerView.LayoutManager layoutManager;
 
-    FirebaseRecyclerAdapter<Training_Plans,MenuViewHolder> adapter;
+    FirebaseRecyclerAdapter<Training_Plans, MenuViewHolder> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +57,8 @@ public class LeftMenu extends AppCompatActivity
 
         //init firebase
         database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
         training_Plans = database.getReference("Training_Plans");
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cartIntent = new Intent(LeftMenu.this,MyPlan.class);
-                startActivity(cartIntent);
-            }
-        });
-
-
 
 
 
@@ -81,17 +73,17 @@ public class LeftMenu extends AppCompatActivity
 
         //set name for user
         View headerView = navigationView.getHeaderView(0);
-        txtNameOfUser = (TextView)headerView.findViewById(R.id.txtNameOfUser);
-        txtNameOfUser.setText(Common.currentUser.getEmail());
+        txtNameOfUser = (TextView) headerView.findViewById(R.id.txtNameOfUser);
+        txtNameOfUser.setText(auth.getCurrentUser().getEmail());
 
         //Load menu
 
-        mRecyclerMenu = (RecyclerView)findViewById(R.id.recycler_menu);
+        mRecyclerMenu = (RecyclerView) findViewById(R.id.recycler_menu);
         mRecyclerMenu.setHasFixedSize(true);
         mRecyclerMenu.setLayoutManager(new LinearLayoutManager(this));
 
-        loadMenuFromFireBase();
-
+        if (auth.getCurrentUser() != null)
+            loadMenuFromFireBase();
 
     }
 
@@ -121,7 +113,6 @@ public class LeftMenu extends AppCompatActivity
                 });
             }
 
-
             @Override
             public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View itemView = LayoutInflater.from(parent.getContext())
@@ -133,16 +124,27 @@ public class LeftMenu extends AppCompatActivity
         mRecyclerMenu.setAdapter(adapter);
     }
 
-
-
+    private Boolean exit = false;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (exit){
+            finish(); // finish activity
         } else {
-            super.onBackPressed();
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
         }
+
+
     }
 
     @Override
@@ -165,9 +167,8 @@ public class LeftMenu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_main_page) {
-            // Handle the camera action
-        } else if (id == R.id.nav_choose_plan) {
+        if (id == R.id.nav_example_plans) {
+            startActivity(new Intent(LeftMenu.this, ExamplesOfTrainingPlans.class));
 
         } else if (id == R.id.nav_diet) {
 
@@ -175,20 +176,14 @@ public class LeftMenu extends AppCompatActivity
 
         } else if (id == R.id.nav_stretching) {
 
-
-        } else if (id == R.id.nav_plan_edit) {
-            Intent planEditIntent = new Intent(LeftMenu.this,MyPlan.class);
-            startActivity(planEditIntent);
-
         } else if (id == R.id.nav_my_plan) {
-            startActivity(new Intent(LeftMenu.this,FavoritesActivity.class));
+            startActivity(new Intent(LeftMenu.this, FavoritesActivity.class));
 
 
         } else if (id == R.id.nav_sign_out) {
-            Intent signIn = new Intent(LeftMenu.this,SignIn.class);
-            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(signIn);
-
+            auth.signOut();
+            startActivity(new Intent(LeftMenu.this, MainActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.Database.Database;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
 import com.example.ccc.streetworkoutapp.Model.Favorites;
@@ -19,6 +18,7 @@ import com.example.ccc.streetworkoutapp.Model.Set;
 import com.example.ccc.streetworkoutapp.ViewHolder.SetViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -32,9 +32,11 @@ public class SetOfExercises extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference excercisesList;
+    FirebaseAuth auth;
 
     String Training_PlansId = "";
     Database localDB;
+
 
     FirebaseRecyclerAdapter<Set, SetViewHolder> adapter;
 
@@ -48,6 +50,7 @@ public class SetOfExercises extends AppCompatActivity {
 
         //Firebase
         database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
         excercisesList = database.getReference("Set_Of_Exercises");
 
         //localDB
@@ -82,7 +85,7 @@ public class SetOfExercises extends AppCompatActivity {
 
                 //add FAvorites
 
-                if (localDB.isFavorite(adapter.getRef(position).getKey(), Common.currentUser.getEmail()))
+                if (localDB.isFavorite(adapter.getRef(position).getKey(), auth.getCurrentUser().getEmail()))
                     viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
 
                 //click to change state od favorite
@@ -96,9 +99,9 @@ public class SetOfExercises extends AppCompatActivity {
                         favorites.setExerciseImage(model.getImage());
                         favorites.setExerciseMenuId(model.getMenuId());
                         favorites.setExerciseName(model.getName());
-                        favorites.setUserEmail(Common.currentUser.getEmail());
+                        favorites.setUserEmail(auth.getCurrentUser().getEmail());
 
-                        if(!localDB.isFavorite(adapter.getRef(position).getKey(),Common.currentUser.getEmail()))
+                        if(!localDB.isFavorite(adapter.getRef(position).getKey(),auth.getCurrentUser().getEmail()))
                         {
                             localDB.addToFavorities(favorites);
                             viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
@@ -106,8 +109,8 @@ public class SetOfExercises extends AppCompatActivity {
                         }
                         else
                         {
-                            localDB.removeFromFavorities(adapter.getRef(position).getKey(),Common.currentUser.getEmail());
-                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            localDB.removeFromFavorities(adapter.getRef(position).getKey(),auth.getCurrentUser().getEmail());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                             Toast.makeText(SetOfExercises.this, ""+model.getName()+" został usunięty z Ulubionych!", Toast.LENGTH_SHORT).show();
                         }
                     }

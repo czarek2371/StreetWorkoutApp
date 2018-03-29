@@ -5,16 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_main_page"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:iconTint="@color/white"
-            android:title="Strona Główna" />
-
-        <item
-            android:id="@+id/nav_choose_plan"
+            android:id="@+id/nav_example_plans"
             android:icon="@drawable/ic_fitness_center_black_24dp"
             android:iconTint="@color/white"
-            android:title="Wybierz Plan" />
+            android:title="Przykładowe plany" />
         <item
             android:id="@+id/nav_diet"
             android:icon="@drawable/ic_local_dining_black_24dp"
@@ -30,16 +24,12 @@
             android:icon="@drawable/ic_accessibility_black_24dp"
             android:iconTint="@color/white"
             android:title="Rozciąganie" />
-        <item
-            android:id="@+id/nav_plan_edit"
-            android:icon="@drawable/ic_fitness_center_black_24dp"
-            android:iconTint="@color/white"
-            android:title="Edytuj plan" />
+
         <item
             android:id="@+id/nav_my_plan"
             android:icon="@drawable/ic_fitness_center_black_24dp"
             android:iconTint="@color/white"
-            android:title="Mój Plan" />
+            android:title="Mój plan" />
         <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"

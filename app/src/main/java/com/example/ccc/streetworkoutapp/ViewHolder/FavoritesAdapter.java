@@ -6,16 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.ccc.streetworkoutapp.Common.Common;
 import com.example.ccc.streetworkoutapp.DetailsOfExercise;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
 import com.example.ccc.streetworkoutapp.Model.Favorites;
-import com.example.ccc.streetworkoutapp.Model.SavePlan;
-import com.example.ccc.streetworkoutapp.Model.Set;
 import com.example.ccc.streetworkoutapp.R;
-import com.example.ccc.streetworkoutapp.SetOfExercises;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
