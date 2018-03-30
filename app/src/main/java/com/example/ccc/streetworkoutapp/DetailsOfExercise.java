@@ -41,23 +41,6 @@ public class DetailsOfExercise extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         exercises = database.getReference("Set_Of_Exercises");
 
-        //Init view
-//        numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
-//        numberButton2 = (ElegantNumberButton) findViewById(R.id.number_button2);
-//        btnFavorite = (FloatingActionButton) findViewById(R.id.btnFavorite);
-//
-//        btnFavorite.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                new Database(getBaseContext()).addToPlan(new Plan(
-//                        exerciseId,
-//                        currentExercise.getName(),
-//                        numberButton.getNumber(),
-//                        numberButton2.getNumber()
-//                ));
-//                Toast.makeText(DetailsOfExercise.this, "Dodano do Mój Plan", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         //Init view
         exercise_name = (TextView) findViewById(R.id.exercise_name);

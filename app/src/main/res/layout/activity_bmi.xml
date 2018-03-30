@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGray"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.example.ccc.streetworkoutapp.BMI">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="Waga"
+            android:inputType="number|numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/darkGray" />
+
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:hint="Wzrost"
+            android:inputType="number|numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/darkGray" />
+
+        <Button
+            android:id="@+id/calc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="10dip"
+            android:background="@color/colorPrimaryDark"
+            android:text="Oblicz"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:layout_marginTop="25dp"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

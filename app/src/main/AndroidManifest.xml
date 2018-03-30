@@ -33,7 +33,8 @@
         <activity android:name=".ForgotPassword" />
         <activity android:name=".ExamplesOfTrainingPlans" />
         <activity android:name=".NumberOfExample" />
-        <activity android:name=".ExampleDetails"></activity>
+        <activity android:name=".ExampleDetails" />
+        <activity android:name=".BMI"></activity>
     </application>
 
 </manifest>

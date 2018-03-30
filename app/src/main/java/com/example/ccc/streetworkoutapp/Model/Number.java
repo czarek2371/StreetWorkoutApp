@@ -5,15 +5,15 @@ package com.example.ccc.streetworkoutapp.Model;
  */
 
 public class Number {
-    private String Image, Name, numberId;
+    private String Image, Name, NumberId;
 
     public Number() {
     }
 
-    public Number(String image, String name, String numberId) {
+    public Number(String image, String name, String numberId, String description) {
         Image = image;
         Name = name;
-        this.numberId = numberId;
+        NumberId = numberId;
     }
 
     public String getImage() {
@@ -33,10 +33,11 @@ public class Number {
     }
 
     public String getNumberId() {
-        return numberId;
+        return NumberId;
     }
 
     public void setNumberId(String numberId) {
-        this.numberId = numberId;
+        NumberId = numberId;
     }
+
 }

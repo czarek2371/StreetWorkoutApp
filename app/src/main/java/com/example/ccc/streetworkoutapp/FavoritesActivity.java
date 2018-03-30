@@ -39,9 +39,9 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerItem
         recyclerView = (RecyclerView) findViewById(R.id.recycler_fav);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(),
-//                R.anim.layout_from_left);
-//        recyclerView.setHasFixedSize(true);
+    /*    LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(),
+               R.anim.layout_from_left);
+        recyclerView.setHasFixedSize(true);*/
 
         //swipe to delete
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT,this);

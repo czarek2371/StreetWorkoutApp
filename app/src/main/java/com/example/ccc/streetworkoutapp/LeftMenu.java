@@ -170,7 +170,8 @@ public class LeftMenu extends AppCompatActivity
         if (id == R.id.nav_example_plans) {
             startActivity(new Intent(LeftMenu.this, ExamplesOfTrainingPlans.class));
 
-        } else if (id == R.id.nav_diet) {
+        } else if (id == R.id.nav_daily_nutritional) {
+            startActivity(new Intent(LeftMenu.this, BMI.class));
 
         } else if (id == R.id.nav_skills) {
 

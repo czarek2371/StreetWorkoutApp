@@ -10,21 +10,20 @@
             android:iconTint="@color/white"
             android:title="Przykładowe plany" />
         <item
-            android:id="@+id/nav_diet"
+            android:id="@+id/nav_stretching"
+            android:icon="@drawable/ic_accessibility_black_24dp"
+            android:iconTint="@color/white"
+            android:title="Rozciąganie" />
+        <item
+            android:id="@+id/nav_daily_nutritional"
             android:icon="@drawable/ic_local_dining_black_24dp"
             android:iconTint="@color/white"
-            android:title="Dieta" />
+            android:title="Kalkulator BMI" />
         <item
             android:id="@+id/nav_skills"
             android:icon="@drawable/ic_skills"
             android:iconTint="@color/white"
             android:title="Umiejętności" />
-        <item
-            android:id="@+id/nav_stretching"
-            android:icon="@drawable/ic_accessibility_black_24dp"
-            android:iconTint="@color/white"
-            android:title="Rozciąganie" />
-
         <item
             android:id="@+id/nav_my_plan"
             android:icon="@drawable/ic_fitness_center_black_24dp"
