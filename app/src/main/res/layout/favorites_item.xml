@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="196dp">
+
 
     <RelativeLayout
         android:id="@+id/view_background"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/training_plans_image"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
             android:scaleType="centerCrop"
-            android:src="@color/darkGray" />
-
+            android:src="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:id="@+id/view_foreground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+            android:background="#4f0e0d0e"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/plan_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nazwa ćwiczenia"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
 
 
-                <TextView
-                    android:id="@+id/plan_item_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Ćwiczenie"
-                    android:textSize="15dp"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    />
-
-
-            </LinearLayout>
-
-
-
-
+        </LinearLayout>
 
     </RelativeLayout>
 

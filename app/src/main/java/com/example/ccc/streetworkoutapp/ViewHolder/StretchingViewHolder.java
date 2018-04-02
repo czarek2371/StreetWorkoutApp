@@ -9,20 +9,20 @@ import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
 import com.example.ccc.streetworkoutapp.R;
 
 /**
- * Created by ccc on 30.03.2018.
+ * Created by ccc on 02.04.2018.
  */
 
-public class DetailsExampleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView txtExampleDetail;
-    public ImageView imageExampledetail;
+public class StretchingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public TextView txtStretchingItemsName;
+    public ImageView imageStretching;
 
     private ItemClickListener itemClickListener;
 
-    public DetailsExampleViewHolder(View itemView) {
+    public StretchingViewHolder(View itemView) {
         super(itemView);
 
-        txtExampleDetail = (TextView) itemView.findViewById(R.id.example_details_item_name);
-        imageExampledetail = (ImageView) itemView.findViewById(R.id.example_details_image);
+        txtStretchingItemsName = (TextView) itemView.findViewById(R.id.stretching_name);
+        imageStretching = (ImageView) itemView.findViewById(R.id.stretching_image);
 
         itemView.setOnClickListener(this);
     }

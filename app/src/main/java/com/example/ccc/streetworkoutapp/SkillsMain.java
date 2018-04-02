@@ -11,88 +11,86 @@ import android.view.ViewGroup;
 
 import com.example.ccc.streetworkoutapp.Database.Database;
 import com.example.ccc.streetworkoutapp.Interface.ItemClickListener;
-import com.example.ccc.streetworkoutapp.Model.Number;
-import com.example.ccc.streetworkoutapp.ViewHolder.NumberViewHolder;
+import com.example.ccc.streetworkoutapp.Model.Skills;
+import com.example.ccc.streetworkoutapp.ViewHolder.SkillsMainViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
-public class NumberOfExample extends AppCompatActivity {
+
+public class SkillsMain extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
     FirebaseDatabase database;
-    DatabaseReference exampleNumberList;
+    DatabaseReference skillsMainReference;
     FirebaseAuth auth;
 
-    String ExamplesId = "";
+    String SkillId = "";
     Database localDB;
 
 
-    FirebaseRecyclerAdapter<Number, NumberViewHolder> adapter;
+    FirebaseRecyclerAdapter<Skills, SkillsMainViewHolder> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_number_of_example);
+        setContentView(R.layout.activity_skills_main);
         //Firebase
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
-        exampleNumberList = database.getReference("Number_Of_Example");
+        skillsMainReference = database.getReference("Skill_Select");
 
         //localDB
         localDB = new Database(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_number);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_skills_main);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        //get intent here
-        if (getIntent() != null)
-            ExamplesId = getIntent().getStringExtra("ExamplesId");
-        if (!ExamplesId.isEmpty() && ExamplesId != null) {
-            loadSetOfExcercises(ExamplesId);
-        }
+        if (auth.getCurrentUser() != null)
+            loadSkillsFromFireBase();
+
+
     }
 
-    private void loadSetOfExcercises(String ExamplesId) {
-        Query listExcervisesByExamplesId = exampleNumberList.orderByChild("numberId").equalTo(ExamplesId);
-        FirebaseRecyclerOptions<Number> options = new FirebaseRecyclerOptions.Builder<Number>()
-                .setQuery(listExcervisesByExamplesId, Number.class)
+    private void loadSkillsFromFireBase() {
+        FirebaseRecyclerOptions<Skills> options = new FirebaseRecyclerOptions.Builder<Skills>()
+                .setQuery(skillsMainReference, Skills.class)
                 .build();
 
-        adapter = new FirebaseRecyclerAdapter<Number, NumberViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Skills, SkillsMainViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final NumberViewHolder viewHolder, final int position, @NonNull final Number model) {
+            protected void onBindViewHolder(@NonNull SkillsMainViewHolder viewHolder, int position, @NonNull Skills model) {
 
-                viewHolder.txtNumberOfPlan.setText(model.getName());
+                viewHolder.txtSkillsMainName.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage())
-                        .into(viewHolder.imageNumberOfPlan);
-
-
-
-                final Number local = model;
+                        .into(viewHolder.imageSkillsMain);
+                final Skills clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        //start new activity
 
+                 /*       Intent showSkills = new Intent(SkillsMain.this, SkillDetails.class);
+                        //because setOfExercisesId is key we get key of this item
+                        showSkills.putExtra("SkillId", adapter.getRef(position).getKey());
+                        startActivity(showSkills);*/
 
                     }
                 });
             }
 
             @Override
-            public NumberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public SkillsMainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View itemView = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.example_number_layout, parent, false);
-                return new NumberViewHolder(itemView);
+                        .inflate(R.layout.skills_main_layout, parent, false);
+                return new SkillsMainViewHolder(itemView);
             }
 
         };

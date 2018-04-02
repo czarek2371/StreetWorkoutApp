@@ -28,13 +28,13 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".SetOfExercises" />
         <activity android:name=".DetailsOfExercise" />
-        <activity android:name=".MyPlan" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".ExamplesOfTrainingPlans" />
         <activity android:name=".NumberOfExample" />
-        <activity android:name=".ExampleDetails" />
-        <activity android:name=".BMI"></activity>
+        <activity android:name=".BMI" />
+        <activity android:name=".Stretching" />
+        <activity android:name=".SkillsMain"></activity>
     </application>
 
 </manifest>

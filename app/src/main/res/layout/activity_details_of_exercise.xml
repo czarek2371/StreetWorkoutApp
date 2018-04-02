@@ -82,8 +82,7 @@
                         android:id="@+id/exercise_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:padding="12dp"
+                        android:padding="5dp"
                         android:text="Nazwa Ćwiczenia"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -99,12 +98,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="5dp"
-                app:cardUseCompatPadding="true">
+                app:cardUseCompatPadding="true"
+                >
 
                 <TextView
                     android:id="@+id/exercise_description"
                     android:lineSpacingMultiplier="1.5"
-                    android:padding="12dp"
+                    android:padding="5dp"
                     android:text="Opis"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"

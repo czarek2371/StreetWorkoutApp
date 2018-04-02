@@ -95,4 +95,4 @@ public class ExamplesOfTrainingPlans extends AppCompatActivity {
 
 
     }
-//}
+

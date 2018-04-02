@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.example.ccc.streetworkoutapp.Interface.RecyclerItemTouchHelperListener;
 import com.example.ccc.streetworkoutapp.ViewHolder.FavoritesViewHolder;
-import com.example.ccc.streetworkoutapp.ViewHolder.PlanViewHolder;
 
 /**
  * Created by ccc on 25.03.2018.
@@ -40,10 +39,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        if (viewHolder instanceof PlanViewHolder) {
-            View foregroundView = ((PlanViewHolder) viewHolder).view_foreground;
-            getDefaultUIUtil().clearView(foregroundView);
-        } else if (viewHolder instanceof FavoritesViewHolder)
+       if (viewHolder instanceof FavoritesViewHolder)
         {
             View foregroundView = ((FavoritesViewHolder) viewHolder).view_foreground;
             getDefaultUIUtil().clearView(foregroundView);
@@ -52,11 +48,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        if (viewHolder instanceof PlanViewHolder) {
-            View foregroundView = ((PlanViewHolder) viewHolder).view_foreground;
-            getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
-        }
-        else if (viewHolder instanceof FavoritesViewHolder)
+     if (viewHolder instanceof FavoritesViewHolder)
         {
             View foregroundView = ((FavoritesViewHolder) viewHolder).view_foreground;
             getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX,dY,actionState,isCurrentlyActive);
@@ -68,12 +60,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (viewHolder != null)
         {
-          if (viewHolder instanceof PlanViewHolder)
-          {
-              View foregroundView = ((PlanViewHolder) viewHolder).view_foreground;
-              getDefaultUIUtil().onSelected(foregroundView);
-          }
-          else if (viewHolder instanceof FavoritesViewHolder)
+       if (viewHolder instanceof FavoritesViewHolder)
           {
               View foregroundView = ((FavoritesViewHolder) viewHolder).view_foreground;
               getDefaultUIUtil().onSelected(foregroundView);
@@ -84,12 +71,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onChildDrawOver(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        if (viewHolder instanceof PlanViewHolder)
-        {
-            View foregroundView = ((PlanViewHolder) viewHolder).view_foreground;
-            getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
-        }
-        else if (viewHolder instanceof FavoritesViewHolder)
+       if (viewHolder instanceof FavoritesViewHolder)
         {
             View foregroundView = ((FavoritesViewHolder) viewHolder).view_foreground;
             getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);

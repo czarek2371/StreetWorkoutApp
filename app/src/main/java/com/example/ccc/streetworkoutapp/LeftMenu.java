@@ -174,8 +174,10 @@ public class LeftMenu extends AppCompatActivity
             startActivity(new Intent(LeftMenu.this, BMI.class));
 
         } else if (id == R.id.nav_skills) {
+            startActivity(new Intent(LeftMenu.this, SkillsMain.class));
 
         } else if (id == R.id.nav_stretching) {
+            startActivity(new Intent(LeftMenu.this, Stretching.class));
 
         } else if (id == R.id.nav_my_plan) {
             startActivity(new Intent(LeftMenu.this, FavoritesActivity.class));
