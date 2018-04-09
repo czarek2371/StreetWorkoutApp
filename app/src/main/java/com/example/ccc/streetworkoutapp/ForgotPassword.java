@@ -38,7 +38,7 @@ public class ForgotPassword extends AppCompatActivity {
                 String email = edtEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter your email!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Wprowadź adres email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -47,9 +47,9 @@ public class ForgotPassword extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ForgotPassword.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgotPassword.this, "Sprawdź adres email, aby zresetować hasło!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ForgotPassword.this, "Fail to send reset password email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgotPassword.this, "Podany adres email nie istnieje!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

@@ -2,12 +2,10 @@ package com.example.ccc.streetworkoutapp;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ccc.streetworkoutapp.Model.Set;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,8 +20,7 @@ public class DetailsOfExercise extends AppCompatActivity {
     TextView exercise_name, exercise_description;
     ImageView img_exercise;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    ElegantNumberButton numberButton, numberButton2;
-    FloatingActionButton btnFavorite;
+
 
     Set currentExercise;
 
@@ -74,8 +71,7 @@ public class DetailsOfExercise extends AppCompatActivity {
 
                 collapsingToolbarLayout.setTitle(currentExercise.getName());
 
-
-                exercise_name.setText(currentExercise.getName());
+               exercise_name.setText(currentExercise.getName());
 
                 exercise_description.setText(currentExercise.getDescription());
 

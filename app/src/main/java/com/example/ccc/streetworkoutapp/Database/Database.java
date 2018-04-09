@@ -68,7 +68,7 @@ import java.util.List;
         String sqlTable = "Favorites";
 
         qb.setTables(sqlTable);
-        Cursor c = qb.query(db, sqlSelect, null, null, null, null, null);
+        Cursor c = qb.query(db, sqlSelect, "UserEmail=?", new String[]{userEmail}, null, null, null);
 
         final List<Favorites> result = new ArrayList<>();
         if (c.moveToFirst())

@@ -1,5 +1,6 @@
 package com.example.ccc.streetworkoutapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -82,7 +83,9 @@ public class NumberOfExample extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         //start new activity
-
+                        Intent detailsOfNumber= new Intent(NumberOfExample.this, NumberOfExampleDetails.class);
+                        detailsOfNumber.putExtra("NumberId", adapter.getRef(position).getKey()); //send exercise id to new activity
+                        startActivity(detailsOfNumber);
 
                     }
                 });

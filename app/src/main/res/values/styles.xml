@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/darkGray</item>
         <item name="colorPrimaryDark">#2a2a2a</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

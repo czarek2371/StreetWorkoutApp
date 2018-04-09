@@ -34,7 +34,8 @@
         <activity android:name=".NumberOfExample" />
         <activity android:name=".BMI" />
         <activity android:name=".Stretching" />
-        <activity android:name=".SkillsMain"></activity>
+        <activity android:name=".SkillsMain" />
+        <activity android:name=".NumberOfExampleDetails"></activity>
     </application>
 
 </manifest>
